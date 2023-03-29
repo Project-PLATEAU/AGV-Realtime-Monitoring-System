@@ -35,5 +35,5 @@ AGV-Realtime-Monitoring-Systemは3D都市モデルを活用し、ROSを通じて
 * 本レポジトリの利用により生じた損失及び損害等について、国土交通省はいかなる責任も負わないものとします。
 
 ## 参考資料　 <!-- 各リンクは納品時に更新 -->
-* （ユースケース名）技術検証レポート: https://www.mlit.go.jp/plateau/libraries/technical-reports/
+* 3D都市モデルとBIMを活用したモビリティ自律運行システム 技術検証レポート（無人搬送車両編）: https://www.mlit.go.jp/plateau/file/libraries/doc/plateau_tech_doc_0046_2_ver01.pdf
 *  PLATEAU Webサイト Use caseページ「3D都市モデルとBIMを活用したモビリティ自律運行システム」: https://www.mlit.go.jp/plateau/use-case/uc22-024/
