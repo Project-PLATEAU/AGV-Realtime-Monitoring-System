@@ -1,0 +1,16 @@
+- name: AGVリアルタイムモニタリングシステム
+  href: ../index.md
+- name: 利用を開始する
+  items:
+  - name: 環境構築・インストール
+    href: Install.md
+  - name: 起動手順（サンプルサーバーを利用）
+    href: SampleData.md
+  - name: 起動手順（実際の車両を利用）
+    href: RealData.md
+  - name: 基本画面について
+    href: UI.md
+  - name: 車両制御機能について
+    href: Control.md
+  - name: ウェイポイント機能について
+    href: Waypoint.md

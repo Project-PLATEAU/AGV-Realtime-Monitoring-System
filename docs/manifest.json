@@ -1,0 +1,213 @@
+{
+  "homepages": [],
+  "source_base_path": "/Users/lasagna/work/plateau/PLATEAU-Digital-Twin-Viewer/Documentation",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html",
+          "hash": "r0D3xJu0P/q344YnZ7ZyURhhmWYH2tlV9JuKeN7qOXU="
+        }
+      },
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "manual/Basic.md",
+      "output": {
+        ".html": {
+          "relative_path": "manual/Basic.html",
+          "hash": "EBDfa3RUz6X5DsxBf0e317Vf460X7GLgdlzQ/l4W6BQ="
+        }
+      },
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "manual/Control.md",
+      "output": {
+        ".html": {
+          "relative_path": "manual/Control.html",
+          "hash": "cf8dBlCvdjrvLF1XfrrtCixviVY5f7CpxEJUE5dgrFI="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "manual/Demo.md",
+      "output": {
+        ".html": {
+          "relative_path": "manual/Demo.html",
+          "hash": "yjTl9XZQk+zSXHBErDs59TNmH8fK9D2jSxuV4xn7tzY="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "manual/Install.md",
+      "output": {
+        ".html": {
+          "relative_path": "manual/Install.html",
+          "hash": "9SazAg6sk34U5cSKwrB5/1EDOo7BulxX9P+2OHhHuSI="
+        }
+      },
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "manual/RealData.md",
+      "output": {
+        ".html": {
+          "relative_path": "manual/RealData.html",
+          "hash": "qW5JG5DNUMykHXDyg2KWgyDHH1Yipx4v4rjrLYgP4+U="
+        }
+      },
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "manual/SampleData.md",
+      "output": {
+        ".html": {
+          "relative_path": "manual/SampleData.html",
+          "hash": "4D0sBfe3zjmjrv5K1r8BUc9lYBpzVLAdz3/85MZdcNU="
+        }
+      },
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "manual/UI.md",
+      "output": {
+        ".html": {
+          "relative_path": "manual/UI.html",
+          "hash": "G/9r+tEEz+Eo2+sUem8/l+OY6JvjfOlvHZHuPg0bUaQ="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "manual/Unity.md",
+      "output": {
+        ".html": {
+          "relative_path": "manual/Unity.html",
+          "hash": "RBaXGUbHnYeVHKWA2X2jehxOc6XgSs/GZMQcUK419/w="
+        }
+      },
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "manual/Waypoint.md",
+      "output": {
+        ".html": {
+          "relative_path": "manual/Waypoint.html",
+          "hash": "WB3jq6ibpDn0PV0d5U+SXSBsgll/CTfJFBhkWB4/sVg="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "manual/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "manual/toc.html",
+          "hash": "1ZfUn3eHOdlOtcX2dBPBU+R5FI6ZhW8k27sJP72xZ+k="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "resources/index/digitaltwin-screenshot.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "resources/index/digitaltwin-screenshot.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "resources/unity/unity-scene-capture.png",
+      "output": {
+        "resource": {
+          "relative_path": "resources/unity/unity-scene-capture.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "rosbag/rosbag2_2023_02_28-06_43_01/metadata.yaml",
+      "output": {
+        "resource": {
+          "relative_path": "rosbag/rosbag2_2023_02_28-06_43_01/metadata.yaml"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "rosbag/rosbag2_2023_02_28-06_43_01/rosbag2_2023_02_28-06_43_01_0.db3",
+      "output": {
+        "resource": {
+          "relative_path": "rosbag/rosbag2_2023_02_28-06_43_01/rosbag2_2023_02_28-06_43_01_0.db3"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "rosbag/rosbag_record.sh",
+      "output": {
+        "resource": {
+          "relative_path": "rosbag/rosbag_record.sh"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html",
+          "hash": "torbzyZYAO9c5e0wKnkgsb/bXMuHNFHzJjanHG7O0nM="
+        }
+      },
+      "version": ""
+    }
+  ],
+  "version_info": {},
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

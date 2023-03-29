@@ -1,0 +1,185 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>車両制御機能について </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="車両制御機能について ">
+    
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../styles/docfx.vendor.css">
+      <link rel="stylesheet" href="../styles/docfx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="../toc.html">
+      <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="車両制御機能について">車両制御機能について</h1>
+
+<ul>
+<li>本システムでは、ROSからUnityへメッセージを送信することで、車両のデータを表示しております。</li>
+<li>また、UnityからROSへメッセージを送信することで、車両の制御をしています。（遠隔操作機能はなし）</li>
+</ul>
+<h3 id="両脇のテキスト表示ボタン機能について説明します">両脇のテキスト表示、ボタン機能について説明します</h3>
+<ul>
+<li>ボタン機能は、実際の車両のROSへメッセージを送っています。サンプルデータ受信の場合には動作しません。</li>
+</ul>
+<p><img src="../resources/unity/ui-buttons.png" alt=""></p>
+<h3 id="テキスト表示部分のソースコード">テキスト表示部分のソースコード</h3>
+<p>各UIのテキスト表示のソースコードはこちらに記載しています。</p>
+<p><code>MQTTManager.cs</code></p>
+<pre><code class="lang-cs">...
+  // UI
+  public Text EcuModeText;
+  public Text BatteryText;
+  public Text SpeedText;
+  public Text SteeringText;
+  public Text ShowSpeedLimitText;
+  public Text PreSpeedLimitText;
+
+...
+
+  private void OnAppMessage(MqttApplicationMessageReceivedEventArgs e) {
+      string topic = e.ApplicationMessage.Topic;
+      
+      string payload = Encoding.UTF8.GetString(e.ApplicationMessage.Payload);
+      if(topic == &quot;fix&quot;) {
+          NMEA_DATA data = JsonUtility.FromJson&lt;NMEA_DATA&gt;(payload);
+          latitude = data.latitude;
+          longitude = data.longitude;
+          altitude = data.altitude;
+          // Debug.Log(altitude);
+      }
+      if(topic == &quot;Angle&quot;) {
+          Vector3 data = JsonUtility.FromJson&lt;Vector3&gt;(payload);
+          rotation = data.z * -1 + adjustAngle;
+      }
+      if(topic == &quot;BatteryLevel&quot;) {
+          Int8 message = JsonUtility.FromJson&lt;Int8&gt;(payload);
+          batteryLevel = message.data;
+      }
+      if(topic == &quot;/vehicle/status/velocity_status&quot;) {
+          VelocityReport message = JsonUtility.FromJson&lt;VelocityReport&gt;(payload);
+          longitudinal_velocity = message.longitudinal_velocity;
+          kmh = (float)(longitudinal_velocity * 3.6);
+      }
+      if(topic == &quot;EcuMode&quot;) {
+          Int8 message = JsonUtility.FromJson&lt;Int8&gt;(payload);
+          ecuMode = message.data;
+      }
+      if(topic == &quot;/vehicle/status/steering_status&quot;) {
+          SteeringReport message = JsonUtility.FromJson&lt;SteeringReport&gt;(payload);
+          steering = Mathf.Round(message.steering_tire_angle * 1000f) / 1000f;
+          steeringPercentage = (float)(steering * 180 / Math.PI);
+      }
+
+      if(topic == &quot;/localization/pose_estimator/transform_probability&quot;) {
+          Float32Stamped message = JsonUtility.FromJson&lt;Float32Stamped&gt;(payload);
+          transformProbability = Mathf.Round(message.data * 1000f) / 1000f;
+      }
+  }
+</code></pre>
+<h2 id="ボタン部分のソースコード">ボタン部分のソースコード</h2>
+<p>各UIのボタン表示のソースコードはこちらに記載しています。</p>
+<ul>
+<li>ボタン機能は、実際の車両のROSへメッセージを送っています。車両と繋ぎ込む際には、適したトピック、型に変更をしてください。</li>
+</ul>
+<p><code>MQTTManager.cs</code></p>
+<pre><code class="lang-cs">...
+  public Button SendSpeedBtn;
+  public Button SpeedLimitUpBtn;
+  public Button SpeedLimitDownBtn;
+  public Button EngageBtn;
+  public Button GoalPoseBtn;
+
+...
+  private void OnSendBtnClick() {...}
+  private void OnUpBtnClick() {...}
+  private void OnDownBtnClick() {...}
+  private void OnEngageBtnClick() {...}
+</code></pre>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

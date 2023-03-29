@@ -1,0 +1,192 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>ウェイポイント機能について </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="ウェイポイント機能について ">
+    
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../styles/docfx.vendor.css">
+      <link rel="stylesheet" href="../styles/docfx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="../toc.html">
+      <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="ウェイポイント機能について">ウェイポイント機能について</h1>
+
+<ul>
+<li>本システムでは、ROSからUnityへウェイポイントを送ることで車両の目的地を設定しています。</li>
+<li>ウェイポイント機能は、実際の車両のROSへメッセージを送っています。サンプルデータ受信の場合には動作しません。</li>
+</ul>
+<h2 id="ウェイポイントの設定">ウェイポイントの設定</h2>
+<p><img src="../resources/unity/waypoint1.png" alt=""></p>
+<ul>
+<li>ウェイポイント設定は <code>LineMarker.cs</code> で行っています。</li>
+<li>目標座標を、お使いのROSシステムに合った形で設定してください。</li>
+</ul>
+<pre><code class="lang-cs">void Start()
+{
+    WayPointList = new List&lt;OnlineMapsMarker3D&gt;();
+
+    map = OnlineMaps.instance;
+
+    marker1 = OnlineMapsMarker3DManager.CreateItem(135.394764, 34.664135, targetObject);
+    marker1.scale = markerSize;
+    marker1.altitude = 1f;
+    WayPointList.Add(marker1);
+    WaypointMarker1 = OnlineMapsMarkerManager.CreateItem(135.394764, 34.664135, &quot;WayPoint1-1&quot;);
+    WaypointMarker1.OnClick += OnWaypoint1Click;
+
+    marker2 = OnlineMapsMarker3DManager.CreateItem(135.395246, 34.664275, targetObject);
+    marker2.scale = markerSize;
+    marker2.altitude = 1.5f;
+    WayPointList.Add(marker2);
+    WaypointMarker2 = OnlineMapsMarkerManager.CreateItem(135.395246, 34.664275, &quot;WayPoint1-2&quot;);
+    WaypointMarker2.OnClick += OnWaypoint2Click;
+
+    marker3 = OnlineMapsMarker3DManager.CreateItem(135.395629, 34.664334, targetObject);
+    marker3.scale = markerSize;
+    marker3.altitude = 2.5f;
+    WayPointList.Add(marker3);
+    WaypointMarker3 = OnlineMapsMarkerManager.CreateItem(135.395629, 34.664334, &quot;WayPoint1-3&quot;);
+    WaypointMarker3.OnClick += OnWaypoint3Click;
+
+    marker4 = OnlineMapsMarker3DManager.CreateItem(135.395871, 34.664332, targetObject);
+    marker4.scale = markerSize;
+    marker4.altitude = 2.5f;
+    WayPointList.Add(marker4);
+    WaypointMarker4 = OnlineMapsMarkerManager.CreateItem(135.395871, 34.664332, &quot;WayPoint1-4&quot;);
+    WaypointMarker4.OnClick += OnWaypoint4Click;
+
+    marker5 = OnlineMapsMarker3DManager.CreateItem(135.396600, 34.664237, targetObject);
+    marker5.scale = markerSize;
+    marker5.altitude = 3f;
+    WayPointList.Add(marker5);
+    WaypointMarker5 = OnlineMapsMarkerManager.CreateItem(135.396600, 34.664237, &quot;WayPoint1-5&quot;);
+    WaypointMarker5.OnClick += OnWaypoint5Click;
+
+    marker6 = OnlineMapsMarker3DManager.CreateItem(135.397924, 34.664031, targetObject);
+    marker6.scale = markerSize;
+    marker6.altitude = 3f;
+    WayPointList.Add(marker6);
+    GoalMarker1 = OnlineMapsMarkerManager.CreateItem(135.397924, 34.664031, &quot;Goal1&quot;);
+    GoalMarker1.OnClick += OnGoal1Click;
+</code></pre>
+<h2 id="ウェイポイントの送信">ウェイポイントの送信</h2>
+<p><img src="../resources/unity/waypoint2.png" alt=""></p>
+<ul>
+<li>設定したウェイポイントをクリックすると、ROS側へ目的座標を送信します。</li>
+<li>ウェイポイント送信は <code>LineMarker.cs</code> で行っています。</li>
+<li>目標座標は、お使いのROSシステムに合った形で設定をしてください。</li>
+</ul>
+<pre><code class="lang-cs">private void OnWaypoint1Click(OnlineMapsMarkerBase marker) {
+    mqttManager.SendInitPose(-320.689f, 231.272f, 0.0f, 0.0f, 0.0f, -0.999f, 0.008f);
+}
+
+private void OnWaypoint2Click(OnlineMapsMarkerBase marker) {
+    mqttManager.SendInitPose(-369.413f, 230.417f, 0.0f, 0.0f, 0.0f, -0.999f, 0.007f);
+}
+
+private void OnWaypoint3Click(OnlineMapsMarkerBase marker) {
+    mqttManager.SendInitPose(-400.148f, 232.606f, 0.0f, 0.0f, 0.0f, 0.997f, 0.075f);
+}
+
+private void OnWaypoint4Click(OnlineMapsMarkerBase marker) {
+    mqttManager.SendInitPose(-400.148f, 232.606f, 0.0f, 0.0f, 0.0f, 0.997f, 0.075f);
+}
+
+private void OnWaypoint5Click(OnlineMapsMarkerBase marker) {
+    mqttManager.SendInitPose(-400.148f, 232.606f, 0.0f, 0.0f, 0.0f, 0.997f, 0.075f);
+}
+
+private void OnGoal1Click(OnlineMapsMarkerBase marker) {
+    mqttManager.SendGoalPose(-484.418f, 266.882f, 0.0f, 0.0f, 0.0f, 0.973f, 0.228f);
+}
+</code></pre>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

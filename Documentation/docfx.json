@@ -1,0 +1,34 @@
+{
+    "metadata": [
+    ],
+    "build": {
+        "globalMetadata": {
+            "_disableContribution": true
+        },
+        "content": [
+            {
+                "files": [
+                    "toc.yml",
+                    "index.md"
+                ]
+            },
+            {
+                "src": "manual",
+                "files": [
+                    "toc.yml",
+                    "*.md"
+                ],
+                "dest": "manual"
+            }
+        ],
+        "resource": [
+            {
+                "files": [
+                    "resources/**/*",
+                    "rosbag/**/*"
+                ]
+            }
+        ],
+        "dest": "../docs"
+    }
+}
