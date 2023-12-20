@@ -22,7 +22,7 @@ AGV-Realtime-Monitoring-Systemは3D都市モデルを活用し、ROSを通じて
 - 本ツールは[アダワープジャパン株式会社](https://adawarp.com/)が開発したものです。
 
 ## 3．利用手順
-- インストール手順、使用方法については[マニュアル](https://project-plateau.github.io/UC22-024-AGV-Realtime-Monitoring-System/)をご覧ください。
+- インストール手順、使用方法については[マニュアル](https://project-plateau.github.io/AGV-Realtime-Monitoring-System/)をご覧ください。
 
 ## ライセンス <!-- 定型文のため変更しない -->
 * ソースコードおよび関連ドキュメントの著作権は国土交通省に帰属します。
